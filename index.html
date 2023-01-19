@@ -14,7 +14,8 @@
             }
             #feedback {
                 font-size: 1.2em;
-                color: green;
+                color: red;
+                font-weight: bold;
             }
             .alert {
                 padding: 1rem;
@@ -37,7 +38,8 @@
     <button onclick="copyNames()">Copy All</button>
     <div id="feedback"></div>
     <div id="name-display"></div>
-    <div id="feedback" class="alert alert-success" role="alert"></div>
+    <div id="alert-success"></div>
+
     <script>
         function displayName() {
             var name = document.getElementById("name").value;
@@ -59,17 +61,16 @@
         function copyNames() {
             var names = document.getElementsByClassName("name-display");
             var namesList = "";
-            var index = 1;
             for (var i = 0; i < names.length; i++) {
                 if (names[i].tagName === "P") {
                     namesList += names[i].innerText + "\n";
-                    index++;
                 }
             }
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(namesList).then(function() {
                     var feedback = document.getElementById("feedback");
                     feedback.innerHTML = "Names copied to clipboard!";
+
                     setTimeout(function() {
                         feedback.innerHTML = "";
                     }, 3000); // 3000 milliseconds = 3 seconds
