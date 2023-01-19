@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Name Script</title>
+<title>Name Input</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 @media (max-width: 600px) {
@@ -9,15 +9,22 @@
     font-size: 2em; /* double the size of the original text */
     width: 200px; /* increase the width of the image */
   }
+  #feedback {
+    font-size: 1.2em;
+    color: green;
+  }
 }
 </style>
 </head>
+
 <body>
 
 Name: <input type="text" id="name"><br><br>
 Count: <input type="text" id="cnt"><br><br>
 <button onclick="displayName()">Submit</button>
+<button onclick="copyNames()">Copy All</button>
 
+<div id="feedback"></div>
 <div id="name-display"></div>
 
 <script>
@@ -37,6 +44,27 @@ function displayName() {
     display.appendChild(p);
   }
 }
+
+function copyNames() {
+    var names = document.getElementsByClassName("name-display");
+    var namesList = "";
+    for (var i = 0; i < names.length; i++) {
+      namesList += (i + 1) + ". " + names[i].innerText + "\n";
+    }
+    navigator.clipboard.writeText(namesList);
+  }
+  
+function copyNames() {
+    var names = document.getElementsByClassName("name-display");
+    var namesList = "";
+    for (var i = 0; i < names.length; i++) {
+      namesList += (i + 1) + ". " + names[i].innerText + "\n";
+    }
+    navigator.clipboard.writeText(namesList).then(function() {
+      var feedback = document.getElementById("feedback");
+      feedback.innerHTML = "Names copied to clipboard!";
+    });
+  }
 </script>
 
 </body>
