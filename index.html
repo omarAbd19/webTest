@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Name Input</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,30 +16,23 @@
                 color: green;
             }
             .alert {
-                padding: 1rem;
-                margin-bottom: 1rem;
-                border: 1px solid transparent;
-                border-radius: .25rem;
+              padding: 1rem;
+              margin-bottom: 1rem;
+              border: 1px solid transparent;
+              border-radius: .25rem;
             }
             .alert-success {
-                color: #155724;
-                background-color: #d4edda;
-                border-color: #c3e6cb;
+              color: #155724;
+              background-color: #d4edda;
+              border-color: #c3e6cb;
             }
-        }
-
-        .red-text {
-            color: red;
         }
     </style>
 </head>
-
 <body>
-
     Name: <input type="text" id="name"><br><br> Count: <input type="text" id="cnt"><br><br>
     <button onclick="displayName()">Submit</button>
     <button onclick="copyNames()">Copy All</button>
-
     <div id="feedback"></div>
     <div id="name-display"></div>
     <div id="feedback" class="alert alert-success" role="alert"></div>
@@ -61,7 +53,6 @@
                 display.appendChild(p);
             }
         }
-
         function copyNames() {
             var names = document.getElementsByClassName("name-display");
             var namesList = "";
@@ -72,10 +63,8 @@
                 navigator.clipboard.writeText(namesList).then(function() {
                     var feedback = document.getElementById("feedback");
                     feedback.innerHTML = "Names copied to clipboard!";
-                    feedback.classList.add("red-text");
-                    setTimeout(function() {
+                    setTimeout(function(){
                         feedback.innerHTML = "";
-                        feedback.classList.remove("red-text");
                     }, 3000); // 3000 milliseconds = 3 seconds
                 }, function(err) {
                     console.error('Failed to write to clipboard: ', err);
@@ -89,13 +78,11 @@
                 textArea.remove();
                 var feedback = document.getElementById("feedback");
                 feedback.innerHTML = "Names copied to clipboard!"
-                setTimeout(function() {
+                setTimeout(function(){
                     feedback.innerHTML = "";
                 }, 3000);
             }
         }
     </script>
-
 </body>
-
 </html>
