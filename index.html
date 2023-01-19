@@ -17,18 +17,21 @@
                 color: green;
             }
             .alert {
-              padding: 1rem;
-              margin-bottom: 1rem;
-              border: 1px solid transparent;
-              border-radius: .25rem;
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border: 1px solid transparent;
+                border-radius: .25rem;
             }
             .alert-success {
-              color: #155724;
-              background-color: #d4edda;
-              border-color: #c3e6cb;
+                color: #155724;
+                background-color: #d4edda;
+                border-color: #c3e6cb;
             }
         }
 
+        .red-text {
+            color: red;
+        }
     </style>
 </head>
 
@@ -69,8 +72,10 @@
                 navigator.clipboard.writeText(namesList).then(function() {
                     var feedback = document.getElementById("feedback");
                     feedback.innerHTML = "Names copied to clipboard!";
-                    setTimeout(function(){
+                    feedback.classList.add("red-text");
+                    setTimeout(function() {
                         feedback.innerHTML = "";
+                        feedback.classList.remove("red-text");
                     }, 3000); // 3000 milliseconds = 3 seconds
                 }, function(err) {
                     console.error('Failed to write to clipboard: ', err);
@@ -84,12 +89,11 @@
                 textArea.remove();
                 var feedback = document.getElementById("feedback");
                 feedback.innerHTML = "Names copied to clipboard!"
-                setTimeout(function(){
+                setTimeout(function() {
                     feedback.innerHTML = "";
                 }, 3000);
             }
         }
-
     </script>
 
 </body>
