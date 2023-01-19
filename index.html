@@ -72,6 +72,8 @@
                     setTimeout(function(){
                         feedback.innerHTML = "";
                     }, 3000); // 3000 milliseconds = 3 seconds
+                }, function(err) {
+                    console.error('Failed to write to clipboard: ', err);
                 });
             } else {
                 var textArea = document.createElement("textarea");
@@ -81,7 +83,7 @@
                 document.execCommand("copy");
                 textArea.remove();
                 var feedback = document.getElementById("feedback");
-                feedback.innerHTML = "Names copied to clipboard!";
+                feedback.innerHTML = "Names copied to clipboard!"
                 setTimeout(function(){
                     feedback.innerHTML = "";
                 }, 3000);
